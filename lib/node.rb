@@ -4,7 +4,7 @@ class Node
   def initialize
     @leaf_node = false
     @link = Hash.new
-    @keys = Array.new
+    @key = Array.new
     @value = ""
   end
 

@@ -16,7 +16,7 @@ class NodeTest < MiniTest::Test
 
   def test_keys_are_an_empty_array
     node = Node.new
-    assert_equal Array, node.keys.class
+    assert_equal Array, node.key.class
   end
 
   def test_initial_value_is_an_empty_string

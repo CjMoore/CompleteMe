@@ -21,12 +21,14 @@ class CompleteMe
 
   def insert_words(word)
 
-   word.char.each do |char|
+   word.chars.each do |char|
      current_node = Node.new
-     current_node.keys << char
+     current_node.key << char
+     current_node.link.key = char
    end
-
-
  end
 
+ #
+ # def populate(dictionary)
+ #   dictionary.split
 end
