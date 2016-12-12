@@ -1,36 +1,31 @@
 require_relative 'node.rb'
 
 class Trie
+  attr_accessor :root
 
   def initialize
     @count = 0
-    @root = Node.new
+    @root = Node.new("")
     #roots are all the beginning nodes of a word
   end
-  #
-  # def insert(word)
-  #
-  #   if root.nil?
-  #     root = Node.new
-  #     root.insert_words(word)
-  #     # @count += 1
-  #   else
-  #     insert_words(word)
-  #   end
+
+  # def root
+  #   @root = Node.new
   # end
 
-  def insert_words(word, current_node = nil)
+  def insert_words(word, current_node=nil)
     word = word.downcase
     #any roots exist set it to first letter of word
     current_node = @root
     first_letter = word[0]
-    new_child = current_node[first_letter]
+    # current_node.children[first_letter] = new_child.children
+    new_child = current_node.children.keys[0]
     if new_child
       #recursively go through word
       insert_words(word[1..-1], new_child.children)
     else
       #create new node using (node, word)
-      current_node[new_child] = create_node(Node.new(new_child), word[1..-1])
+      current_node.children[first_letter] = create_node(Node.new(new_child), word[1..-1])
     end
   end
 
