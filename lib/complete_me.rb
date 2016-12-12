@@ -13,7 +13,8 @@ class CompleteMe
 
     if root.nil?
       root = Node.new
-      insert_words(word)
+      root.insert_words(word)
+      @count += 1
     else
       insert_words(word)
     end
@@ -22,6 +23,7 @@ class CompleteMe
   def insert_words(word)
 
    word.chars.each do |char|
+
      current_node = Node.new
      current_node.key << char
      current_node.link.key = char
