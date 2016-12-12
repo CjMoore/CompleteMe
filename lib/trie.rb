@@ -4,8 +4,7 @@ class Trie
 
   def initialize
     @count = 0
-    @root = nil
-    @parents = {}
+    @root = Node.new
     #roots are all the beginning nodes of a word
   end
   #
@@ -20,37 +19,34 @@ class Trie
   #   end
   # end
 
-
-
-  def insert_words(word, current_node)
-
+  def insert_words(word, current_node = nil)
     word = word.downcase
-
-    #if any roots exist set it to first letter of word
-    current_node ||= @parents
-      first_letter = word[0]
-      new_child = current_node[first_letter]
+    #any roots exist set it to first letter of word
+    current_node = @root
+    first_letter = word[0]
+    new_child = current_node[first_letter]
     if new_child
       #recursively go through word
-      insert_word(word[1..-1], new_child.children)
+      insert_words(word[1..-1], new_child.children)
     else
       #create new node using (node, word)
-      at[new_child] = create_node(Node.new(new_child), word[1..-1])
+      current_node[new_child] = create_node(Node.new(new_child), word[1..-1])
     end
-
+  end
 
     def create_node(node, word)
-        #create a new node with first letter
-        if word
+      #create a new node with first letter
+      if word
         #create a new child node with first letter
-          new_child = Node.new(word[0])
+        new_child = Node.new(word[0])
         #next letter gets put in to next child
-          node.children[word[0]] = new_child
+        node.children[word[0]] = new_child
         #recursively go through word until its all done
-          create_node(new_child, word[1..-1])
-        else
-          #when that's done return node
-          node
+        create_node(new_child, word[1..-1])
+      else
+        #when that's done return node
+        node.leaf_node = true
+      end
     end
 
     # def break_up_chars(word)

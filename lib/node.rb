@@ -1,9 +1,9 @@
 class Node
-  attr_accessor :leaf_node, :link
+  attr_accessor :leaf_node, :children, :letter
 
-  def initialize
-    @children = Hash.new
-    @leaf_node = false
+  def initialize(letter, leaf_node = false)
+    @children = {}
+    @leaf_node = leaf_node
     @letter = letter
   end
 

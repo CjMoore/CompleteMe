@@ -4,23 +4,21 @@ require './lib/node.rb'
 
 class NodeTest < MiniTest::Test
 
+  def test_children_is_empty_hash_by_default
+    node = Node.new("a")
+
+    assert_equal node.children, {}
+  end
+
   def test_leaf_node_is_false_by_default
-    node = Node.new
-    refute node.leaf_node
+    node = Node.new("a")
+
+    assert_equal node.leaf_node, false
   end
 
-  def test_link_is_a_hash
-    node = Node.new
-    assert_equal Hash, node.link.class
-  end
+  def test_letter_inserted_as_argument
+    node = Node.new("a")
 
-  def test_keys_are_an_empty_array
-    node = Node.new
-    assert_equal Array, node.key.class
-  end
-
-  def test_initial_value_is_an_empty_string
-    node = Node.new
-    assert_equal "", node.value
+    assert_equal node.letter, "a"
   end
 end
