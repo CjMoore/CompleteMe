@@ -4,6 +4,7 @@ class Node
   def initialize
     @children = Hash.new
     @leaf_node = false
+    @letter = letter
   end
 
 end
