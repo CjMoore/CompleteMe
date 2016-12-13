@@ -5,7 +5,7 @@ class CompleteMe
 
   def insert(word)
     trie = Trie.new
-    trie.insert_word(word)
+    trie.insert_words(word)
   end
 
 
