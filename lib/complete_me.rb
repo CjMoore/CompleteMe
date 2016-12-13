@@ -18,13 +18,17 @@ class CompleteMe
     if dictionary.empty?
       puts "empty!"
     else
-      # dictionary = dictionary[0..50]
       dictionary = dictionary.split("\n")
-      p dictionary
       dictionary.each do |word|
-        p word
         insert(word) if word.class == String
       end
     end
+
+  def suggest(word)
+  end
+
+  def sort
+  end
+
   end
 end
