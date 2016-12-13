@@ -9,8 +9,11 @@ class CompleteMe
   end
 
   def load_dictionary
+
+    dictionary_string = File.read("/usr/share/dict/words")
+
+    dictionary = dictionary_string.split("\n")
+  
   end
-
-
 
 end
