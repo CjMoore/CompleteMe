@@ -62,10 +62,10 @@ class CompleteMeTest < MiniTest::Test
 
     assert_equal 4, cm.count
   end
+
   def test_populate_can_insert_large_dictionary
     cm = CompleteMe.new
     dictionary_1 = File.read("/usr/share/dict/words")
-    # binding.pry
     cm.populate(dictionary_1)
 
     assert_equal 235886, cm.count

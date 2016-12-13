@@ -18,7 +18,11 @@ class CompleteMe
     if dictionary.empty?
       puts "empty!"
     else
-      dictionary.each_line do |word|
+      # dictionary = dictionary[0..50]
+      dictionary = dictionary.split("\n")
+      p dictionary
+      dictionary.each do |word|
+        p word
         insert(word) if word.class == String
       end
     end
