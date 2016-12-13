@@ -28,9 +28,8 @@ class Trie
   end
 
     def create_node(node, word)
-      if word == nil
-          puts "boo"
-      elsif word.length > 0
+
+      if word.length > 0 && word != nil
         node.children[word[0]] = Node.new
         next_node = node.children[word[0]]
         create_node(next_node, word[1..-1])
