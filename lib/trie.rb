@@ -5,12 +5,7 @@ class Trie
   attr_accessor :root
 
   def initialize
-    @count = 0
     @root = Node.new
-    #roots are all the beginning nodes of a word
-  end
-
-  def populate
   end
 
   def insert_words(word, current_node=@root)
@@ -32,7 +27,6 @@ class Trie
         node.children[word[0]] = Node.new
         next_node = node.children[word[0]]
         create_node(next_node, word[1..-1])
-
       else
         node.leaf_node = true
       end
@@ -40,11 +34,8 @@ class Trie
       node
     end
 
-    # def break_up_chars(word)
-    #   word.chars.each do |char|
-    #
-    #     child_node = Node.new
-    #     current_node.children[char] = child_node
-    #
-    # end
+    def populate_trie(dictionary)
+
+    end
+
 end

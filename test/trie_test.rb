@@ -6,10 +6,6 @@ require 'pry'
 
 class TrieTest < MiniTest::Test
 
-  # def test_current_node_nil_by_default
-  #   trie = Trie.new
-  #   trie.insert_words("pizza")
-
   def test_trie_root_is_node
     trie = Trie.new
 
@@ -19,18 +15,17 @@ class TrieTest < MiniTest::Test
     def test_create_node_can_insert_single_letter_word
       trie = Trie.new
       trie.insert_words("a")
-      # binding.pry
 
       assert_equal trie.root.children.keys, ["a"]
       assert_equal trie.root.children["a"].class, Node
     end
-    #
-    # def test_single_letter_word_creates_leaf_node
-    #   trie = Trie.new
-    #   trie.insert_words("a")
-    #
-    #   assert_equal trie.root.children.values[0], {}
-    # end
+
+    def test_single_letter_word_creates_leaf_node
+      trie = Trie.new
+      trie.insert_words("a")
+
+      assert_equal trie.root.children["a"].leaf_node, true
+    end
 
     def test_create_node_can_insert_two_letter_word
       trie = Trie.new
@@ -67,4 +62,5 @@ class TrieTest < MiniTest::Test
 
       assert_equal trie.root.children.keys, ["h", "c"]
     end
+
 end
