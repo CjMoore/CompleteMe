@@ -10,9 +10,8 @@ class Trie
     #roots are all the beginning nodes of a word
   end
 
-  # def root
-  #   @root = Node.new
-  # end
+  def populate
+  end
 
   def insert_words(word, current_node=@root)
     word = word.downcase

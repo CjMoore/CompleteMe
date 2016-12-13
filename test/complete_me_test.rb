@@ -14,6 +14,10 @@ class CompleteMeTest < MiniTest::Test
     assert_nil trie.root
   end
 
+  def test_counts_the_words_in_dictionary
+    assert_equal 235886, CompleteMe.new.dictionary.count
+  end
+
   # def test_word_can_be_split_up_into_chars
   #   trie = CompleteMe.new
   #   assert_nil

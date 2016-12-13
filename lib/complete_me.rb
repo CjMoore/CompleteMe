@@ -8,5 +8,9 @@ class CompleteMe
     trie.insert_words(word)
   end
 
+  def load_dictionary
+  end
+
+
 
 end
