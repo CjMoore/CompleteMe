@@ -13,7 +13,7 @@ class Trie
     word = word.downcase
     #any roots exist set it to first letter of word
     first_letter = word[0]
-    # current_node.children[first_letter] = new_child.children
+
     if current_node.children.keys.include?(first_letter)
       current_node = current_node.children[first_letter]
       if word == first_letter
@@ -40,8 +40,23 @@ class Trie
       node
     end
 
-    def populate_trie(dictionary)
+    def search_trie(prefix, current_node=@root)
+      # if prefix.empty?
+      #   letter = current_node.children.keys
+      # else
+        letter = prefix[0]
+      # end
+      #  unless current_node.leaf_node
+         binding.pry
+        current_node = current_node.children[letter]
+        # if prefix.empty?
+        #   new_letter = current_node.children.keys
+        # else
+          new_letter = prefix[1..-1]
+        # end
+        search_trie(new_letter, current_node)
+        # end
+      # end
 
     end
-
 end

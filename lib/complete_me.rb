@@ -25,4 +25,10 @@ class CompleteMe
       end
     end
   end
+
+  def suggest(word)
+    suggestions = []
+    trie.search_trie(word) 
+
+  end
 end
