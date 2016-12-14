@@ -9,7 +9,6 @@ class Trie
   end
 
   def insert_words(word, current_node=@root)
-
     word = word.downcase
     #any roots exist set it to first letter of word
     first_letter = word[0]
@@ -27,36 +26,33 @@ class Trie
     end
   end
 
-    def create_node(node, word)
+  def create_node(node, word)
 
-      if word.length > 0 && word != nil
-        node.children[word[0]] = Node.new
-        next_node = node.children[word[0]]
-        create_node(next_node, word[1..-1])
-      else
-        node.leaf_node = true
-      end
-
-      node
+    if word.length > 0 && word != nil
+      node.children[word[0]] = Node.new
+      next_node = node.children[word[0]]
+      create_node(next_node, word[1..-1])
+    else
+      node.leaf_node = true
     end
+      node
+  end
 
     def search_trie(prefix, current_node=@root)
-      # if prefix.empty?
-      #   letter = current_node.children.keys
-      # else
         letter = prefix[0]
-      # end
-      #  unless current_node.leaf_node
-         binding.pry
+        return_word = []
+        return_word.push(letter)
+        binding.pry
+      # unless current_node.leaf_node
         current_node = current_node.children[letter]
-        # if prefix.empty?
-        #   new_letter = current_node.children.keys
-        # else
+        if prefix.empty?
+          new_letter = current_node.children.keys[0]
+        else
           new_letter = prefix[1..-1]
-        # end
-        search_trie(new_letter, current_node)
-        # end
-      # end
+        end
+        # search_trie(new_letter, current_node)
 
+      # end
+      # return_word.join
     end
 end

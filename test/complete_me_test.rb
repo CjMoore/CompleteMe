@@ -75,9 +75,9 @@ class CompleteMeTest < MiniTest::Test
   def test_can_suggest_using_inserted_word
   cm = CompleteMe.new
   cm.insert("pizza")
-  cm.suggest("piz")
   # binding.pry
-  skip
+  # cm.suggest("piz")
+  # skip
   assert_equal ["pizza"], cm.suggest("piz")
   end
 end
