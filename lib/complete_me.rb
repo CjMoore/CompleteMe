@@ -27,8 +27,20 @@ class CompleteMe
   end
 
   def suggest(word)
-    suggestions = []
-    suggestions << trie.search_trie(word)
-    suggestions
+    # suggestion = []
+    # suggestion <<
+    # binding.pry
+    if count > 1
+      # binding.pry
+      trie.search_trie(word).map do |letters|
+        word + letters
+      end
+    else
+      suggestion = Array.new
+      suggestion << (word + trie.search_trie(word).join)
+    end
+
+
+    # suggestion
   end
 end

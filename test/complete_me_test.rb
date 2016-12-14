@@ -80,4 +80,35 @@ class CompleteMeTest < MiniTest::Test
   # skip
   assert_equal ["pizza"], cm.suggest("piz")
   end
+
+  def test_can_suggest_suggest_two_words
+    cm = CompleteMe.new
+    cm.populate("can\ncar\ncat")
+
+    assert_equal ["can", "car", "cat"], cm.suggest("ca")
+  end
+
+  def test_can_suggest_several_words_with_bit_trie
+    skip
+    cm = CompleteMe.new
+    dictionary_1 = File.read("/usr/share/dict/words")
+    cm.populate(dictionary_1)
+#
+    # binding.pry
+
+    assert_equal ["pizzeria", "pizza", "pizzicato", "pizzle", "pize"], cm.suggest("piz")
+
+  end
+
+  def test_it_can_suggest_after_three_letters_suggested
+    skip
+    cm = CompleteMe.new
+    dictionary = File.read("/usr/share/dict/words")
+    cm.populate(dictionary)
+
+    cm.select("piz", "pizzicato")
+    cm.select("piz", "pizzeria")
+    cm.select("piz", "pizza")
+    assert_equal ["pizza", "pizzeria", "pizzicato"], cm.suggest("piz")
+  end
 end
