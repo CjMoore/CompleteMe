@@ -75,6 +75,7 @@ class CompleteMeTest < MiniTest::Test
   def test_can_suggest_using_inserted_word
   cm = CompleteMe.new
   cm.insert("pizza")
+  # skip
   # binding.pry
   # cm.suggest("piz")
   # skip
@@ -84,12 +85,13 @@ class CompleteMeTest < MiniTest::Test
   def test_can_suggest_suggest_two_words
     cm = CompleteMe.new
     cm.populate("can\ncar\ncat")
+    # cm.suggest("ca")
+    # skip
 
     assert_equal ["can", "car", "cat"], cm.suggest("ca")
   end
 
-  def test_can_suggest_several_words_with_bit_trie
-    skip
+  def test_can_suggest_several_words_with_big_trie
     cm = CompleteMe.new
     dictionary_1 = File.read("/usr/share/dict/words")
     cm.populate(dictionary_1)

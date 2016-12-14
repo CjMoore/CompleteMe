@@ -40,39 +40,19 @@ class Trie
       node
   end
 
-    def search_trie(prefix, current_node=@root)
-      letter = prefix[0] if prefix.class == String
-      # @return_word << letter
-      # binding.pry
-      unless current_node.leaf_node
-        current_node = current_node.children[letter]
-        # binding.pry
-          new_letter = check_prefix_empty(prefix[1..-1], current_node)
-        # new_letter = prefix[1..-1]
-        # if new_letter.empty?
-        #   new_letter = current_node.children.keys[0]
-        # end
-        search_trie(new_letter, current_node)
-      # end
-      end
-    # @suggest
-    # <<
-    @return_word
+  def search_trie(prefix, current_node=@root)
+    letter = prefix[0] if prefix.class == String
+    unless current_node.leaf_node
+      current_node = current_node.children[letter]
+      new_letter = check_prefix_empty(prefix[1..-1], current_node)
+      search_trie(new_letter, current_node)
+    end
+    @return_word = @return_word.reject(&:empty?)
   end
 
   def check_prefix_empty(prefix, current_node)
-    # new_letter = prefix
     if prefix.empty?
-      # new_letter = check_current_node_has_many_children(prefix, current_node)
-      if current_node.children.keys.length == 1
-        new_letter = current_node.children.keys[0]
-        @return_word << new_letter
-      else
-        current_node.children.keys.each do |letter|
-          new_letter = letter
-          @return_word << new_letter
-        end
-      end
+      new_letter = check_current_node_has_many_children(prefix, current_node)
     else
       new_letter = prefix
     end
@@ -80,16 +60,22 @@ class Trie
     new_letter
   end
 
-  # def check_current_node_has_many_children(prefix, current_node)
-  #   if current_node.children.keys.length == 1
-  #     new_letter = current_node.children.keys[0]
-  #   else
-  #     current_node.children.keys.each do |letter|
-  #       new_letter = letter
-  #       # @return_word << new_letter
-  #     end
-  #   end
-  # end
-
+  def check_current_node_has_many_children(prefix, current_node)
+    if current_node.children.keys.length == 1
+      new_letter = current_node.children.keys[0]
+    else
+      # letter_list = []
+      # current_node.children.keys.map do |letter|
+      #   letter_list << letter
+      # end
+      # new_letter = letter_list.join
+      new_letter = current_node.children.keys
+    end
+    if new_letter != nil
+      @return_word << new_letter
+      # binding.pry
+    end
+    new_letter
+  end
 
 end

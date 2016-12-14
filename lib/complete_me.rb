@@ -18,7 +18,6 @@ class CompleteMe
     if dictionary.empty?
       puts "empty!"
     else
-      # dictionary = dictionary[0..50]
       dictionary = dictionary.split("\n")
       dictionary.each do |word|
         insert(word) if word.class == String
@@ -27,11 +26,9 @@ class CompleteMe
   end
 
   def suggest(word)
-    # suggestion = []
-    # suggestion <<
-    # binding.pry
+    # list_of_letters = trie.search_trie(word)
+    # puts list_of_letters
     if count > 1
-      # binding.pry
       trie.search_trie(word).map do |letters|
         word + letters
       end
@@ -39,6 +36,11 @@ class CompleteMe
       suggestion = Array.new
       suggestion << (word + trie.search_trie(word).join)
     end
+    # suggestion = []
+    #
+    # puts trie.search_trie(word)
+    #
+    # suggestion << word + trie.search_trie(word).join
 
 
     # suggestion
