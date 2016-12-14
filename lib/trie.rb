@@ -39,20 +39,23 @@ class Trie
   end
 
     def search_trie(prefix, current_node=@root)
-        letter = prefix[0]
-        return_word = []
-        return_word.push(letter)
-        binding.pry
-      # unless current_node.leaf_node
+      letter = prefix[0] if prefix.class == String
+      return_word = []
+      return_word << letter
+      # binding.pry
+      unless current_node.leaf_node
         current_node = current_node.children[letter]
-        if prefix.empty?
+        new_letter = prefix[1..-1]
+        if new_letter.empty?
           new_letter = current_node.children.keys[0]
-        else
-          new_letter = prefix[1..-1]
         end
-        # search_trie(new_letter, current_node)
+        search_trie(new_letter, current_node)
+      end
+      return_word.join
+    end
 
-      # end
-      # return_word.join
+    def check_prefix_empty(prefix)
+
+
     end
 end
