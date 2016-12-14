@@ -63,4 +63,5 @@ class TrieTest < MiniTest::Test
       assert_equal trie.root.children.keys, ["h", "c"]
     end
 
+
 end

@@ -6,6 +6,7 @@ class Trie
 
   def initialize
     @root = Node.new
+    @return_word = []
   end
 
   def insert_words(word, current_node=@root)
@@ -40,8 +41,8 @@ class Trie
 
     def search_trie(prefix, current_node=@root)
       letter = prefix[0] if prefix.class == String
-      return_word = []
-      return_word << letter
+      # return_word = []
+      @return_word << letter
       # binding.pry
       unless current_node.leaf_node
         current_node = current_node.children[letter]
@@ -51,7 +52,7 @@ class Trie
         end
         search_trie(new_letter, current_node)
       end
-      return_word.join
+      @return_word.join
     end
 
     def check_prefix_empty(prefix)

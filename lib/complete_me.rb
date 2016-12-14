@@ -28,7 +28,7 @@ class CompleteMe
 
   def suggest(word)
     suggestions = []
-    trie.search_trie(word) 
-
+    suggestions << trie.search_trie(word)
+    suggestions
   end
 end
