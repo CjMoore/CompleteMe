@@ -97,7 +97,6 @@ class CompleteMeTest < MiniTest::Test
     cm.populate(dictionary_1)
 #
     # binding.pry
-
     assert_equal ["pizzeria", "pizza", "pizzicato", "pizzle", "pize"], cm.suggest("piz")
 
   end
