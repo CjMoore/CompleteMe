@@ -64,7 +64,7 @@ class CompleteMeTest < MiniTest::Test
   end
 
   def test_populate_can_insert_large_dictionary
-    skip
+
     cm = CompleteMe.new
     dictionary_1 = File.read("/usr/share/dict/words")
     cm.populate(dictionary_1)
@@ -73,32 +73,28 @@ class CompleteMeTest < MiniTest::Test
   end
 
   def test_can_suggest_using_inserted_word
+
   cm = CompleteMe.new
   cm.insert("pizza")
-  # skip
-  # binding.pry
-  # cm.suggest("piz")
-  # skip
+
   assert_equal ["pizza"], cm.suggest("piz")
   end
 
   def test_can_suggest_suggest_two_words
+    skip
     cm = CompleteMe.new
     cm.populate("can\ncar\ncat")
-    # cm.suggest("ca")
-    # skip
 
     assert_equal ["can", "car", "cat"], cm.suggest("ca")
   end
 
   def test_can_suggest_several_words_with_big_trie
+    skip
     cm = CompleteMe.new
     dictionary_1 = File.read("/usr/share/dict/words")
     cm.populate(dictionary_1)
-#
-    # binding.pry
-    assert_equal ["pizzeria", "pizza", "pizzicato", "pizzle", "pize"], cm.suggest("piz")
 
+    assert_equal ["pizzeria", "pizza", "pizzicato", "pizzle", "pize"], cm.suggest("piz")
   end
 
   def test_it_can_suggest_after_three_letters_suggested

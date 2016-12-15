@@ -25,24 +25,7 @@ class CompleteMe
     end
   end
 
-  def suggest(word)
-    # list_of_letters = trie.search_trie(word)
-    # puts list_of_letters
-    if count > 1
-      trie.search_trie(word).map do |letters|
-        word + letters
-      end
-    else
-      suggestion = Array.new
-      suggestion << (word + trie.search_trie(word).join)
-    end
-    # suggestion = []
-    #
-    # puts trie.search_trie(word)
-    #
-    # suggestion << word + trie.search_trie(word).join
+  def suggest
 
-
-    # suggestion
   end
 end

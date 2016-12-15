@@ -7,7 +7,6 @@ class Trie
   def initialize
     @root = Node.new
     @return_words = []
-    @original_prefix = original_prefix
   end
 
   def insert_words(word, current_node=@root)
@@ -39,59 +38,4 @@ class Trie
     end
       node
   end
-
-  # def search_trie(prefix, current_node=@root)
-  #   letter = prefix[0] if prefix.class == String
-  #   unless current_node.leaf_node
-  #     current_node = current_node.children[letter]
-  #     new_letter = check_prefix_empty(prefix[1..-1], current_node)
-  #     search_trie(new_letter, current_node)
-  #   end
-  #   # @return_word = @return_word.reject(&:empty?)
-  # end
-  #
-  # def check_prefix_empty(prefix, current_node)
-  #   if prefix.empty?
-  #     new_letter = check_current_node_has_many_children(prefix, current_node)
-  #   else
-  #     new_letter = prefix
-  #   end
-  #   # @return_word << new_letter
-  #   new_letter
-  # end
-  #
-  # def check_current_node_has_many_children(prefix, current_node)
-  #   if current_node.children.keys.length == 1
-  #     new_letter = current_node.children.keys[0]
-  #   else
-  #     # letter_list = []
-  #     # current_node.children.keys.map do |letter|
-  #     #   letter_list << letter
-  #     # end
-  #     # new_letter = letter_list.join
-  #     # new_letter = current_node.children.keys
-  #
-  #     current_node.children.keys.map do |path|
-  #       current_node = current_node.children[path]
-  #
-  #     end
-  #   end
-  #   if new_letter != nil
-  #     @return_word << new_letter
-  #     # binding.pry
-  #   end
-  #   new_letter
-  # end
-
-  def prefix_search(prefix, current_node=@root)
-    @original_prefix = prefix
-    puts current_node.children.values
-
-  end
-
-
 end
-
-trie = Trie.new
-
-trie.prefix_search("pa")
